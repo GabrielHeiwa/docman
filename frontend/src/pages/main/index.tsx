@@ -43,6 +43,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbPage, BreadcrumbSeparator } from "@/components/ui/breadcrumb"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
+import ReportsTable from "./components/reports-table"
 
 export const description =
     "A products dashboard with a sidebar navigation and a main content area. The dashboard has a header with a search input and a user menu. The sidebar has a logo, navigation links, and a card with a call to action. The main content area shows an empty state with a call to action."
@@ -338,7 +339,7 @@ export default function Dashboard() {
                                 <BreadcrumbSeparator />
                                 <BreadcrumbItem>
                                     <BreadcrumbLink asChild>
-                                        <BreadcrumbPage>All Products</BreadcrumbPage>
+                                        <BreadcrumbPage>List</BreadcrumbPage>
                                     </BreadcrumbLink>
                                 </BreadcrumbItem>
                             </BreadcrumbList>
@@ -347,16 +348,16 @@ export default function Dashboard() {
 
                     <Tabs defaultValue="all">
                         <div className="flex items-center">
-                            <TabsList>
+                            {/* <TabsList>
                                 <TabsTrigger value="all">All</TabsTrigger>
                                 <TabsTrigger value="active">Active</TabsTrigger>
                                 <TabsTrigger value="draft">Draft</TabsTrigger>
                                 <TabsTrigger value="archived" className="hidden sm:flex">
                                     Archived
                                 </TabsTrigger>
-                            </TabsList>
+                            </TabsList> */}
                             <div className="ml-auto flex items-center gap-2">
-                                <DropdownMenu>
+                                {/* <DropdownMenu>
                                     <DropdownMenuTrigger asChild>
                                         <Button variant="outline" size="sm" className="h-8 gap-1">
                                             <ListFilter className="h-3.5 w-3.5" />
@@ -376,155 +377,23 @@ export default function Dashboard() {
                                             Archived
                                         </DropdownMenuCheckboxItem>
                                     </DropdownMenuContent>
-                                </DropdownMenu>
+                                </DropdownMenu> */}
                                 {/* <Button size="sm" variant="outline" className="h-8 gap-1">
                                     <File className="h-3.5 w-3.5" />
                                     <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                                         Export
                                     </span>
                                 </Button> */}
-                                <Button size="sm" className="h-8 gap-1">
+                                {/* <Button size="sm" className="h-8 gap-1">
                                     <PlusCircle className="h-3.5 w-3.5" />
                                     <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
                                         Add Report
                                     </span>
-                                </Button>
+                                </Button> */}
                             </div>
                         </div>
                         <TabsContent value="all">
-                            <Card x-chunk="dashboard-06-chunk-0">
-                                <CardHeader>
-                                    <CardTitle>Report</CardTitle>
-                                    <CardDescription>
-                                        Manage your reports.
-                                    </CardDescription>
-                                </CardHeader>
-                                <CardContent>
-                                    <Table>
-                                        <TableHeader>
-                                            <TableRow>
-                                                <TableHead className="hidden w-[100px] sm:table-cell">
-                                                    <span className="sr-only">Image</span>
-                                                </TableHead>
-                                                <TableHead>Name</TableHead>
-                                                <TableHead>Status</TableHead>
-                                                {/* <TableHead className="hidden md:table-cell">
-                                                    Price
-                                                </TableHead> */}
-                                                <TableHead className="hidden md:table-cell">
-                                                    Total Generate
-                                                </TableHead>
-                                                <TableHead className="hidden md:table-cell">
-                                                    Created at
-                                                </TableHead>
-                                                <TableHead>
-                                                    <span className="sr-only">Actions</span>
-                                                </TableHead>
-                                            </TableRow>
-                                        </TableHeader>
-
-                                        <TableBody>
-                                            {/* <TableRow>
-                                                <TableCell className="hidden sm:table-cell">
-                                                    <img
-                                                        alt="Product image"
-                                                        className="aspect-square rounded-md object-cover"
-                                                        height="64"
-                                                        src="/placeholder.svg"
-                                                        width="64"
-                                                    />
-                                                </TableCell>
-                                                <TableCell className="font-medium">
-                                                    Laser Lemonade Machine
-                                                </TableCell>
-                                                <TableCell>
-                                                    <Badge variant="outline">Draft</Badge>
-                                                </TableCell>
-                                                
-                                                <TableCell className="hidden md:table-cell">
-                                                    25
-                                                </TableCell>
-                                                <TableCell className="hidden md:table-cell">
-                                                    2023-07-12 10:42 AM
-                                                </TableCell>
-                                                <TableCell>
-                                                    <DropdownMenu>
-                                                        <DropdownMenuTrigger asChild>
-                                                            <Button
-                                                                aria-haspopup="true"
-                                                                size="icon"
-                                                                variant="ghost"
-                                                            >
-                                                                <MoreHorizontal className="h-4 w-4" />
-                                                                <span className="sr-only">Toggle menu</span>
-                                                            </Button>
-                                                        </DropdownMenuTrigger>
-                                                        <DropdownMenuContent align="end">
-                                                            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                                            <DropdownMenuItem>Edit</DropdownMenuItem>
-                                                            <DropdownMenuItem>Delete</DropdownMenuItem>
-                                                        </DropdownMenuContent>
-                                                    </DropdownMenu>
-                                                </TableCell>
-                                            </TableRow> */}
-                                            {
-                                                reports.map((report, index) => (
-                                                    <TableRow key={index}>
-                                                        <TableCell className="hidden sm:table-cell">
-                                                            <img
-                                                                alt="Report Preview image"
-                                                                className="aspect-square rounded-md object-cover"
-                                                                height="64"
-                                                                src={report.preview}
-                                                                width="64"
-                                                            />
-                                                        </TableCell>
-                                                        <TableCell className="font-medium">
-                                                            {report.name}
-                                                        </TableCell>
-                                                        <TableCell>
-                                                            <Badge variant="outline">
-                                                                {report.status}
-                                                            </Badge>
-                                                        </TableCell>
-                                                        <TableCell className="hidden md:table-cell">
-                                                            {report.totalGenerate}
-                                                        </TableCell>
-                                                        <TableCell className="hidden md:table-cell">
-                                                            {new Date().toString()}
-                                                        </TableCell>
-                                                        <TableCell>
-                                                            <DropdownMenu>
-                                                                <DropdownMenuTrigger asChild>
-                                                                    <Button
-                                                                        aria-haspopup="true"
-                                                                        size="icon"
-                                                                        variant="ghost"
-                                                                    >
-                                                                        <MoreHorizontal className="h-4 w-4" />
-                                                                        <span className="sr-only">Toggle menu</span>
-                                                                    </Button>
-                                                                </DropdownMenuTrigger>
-                                                                <DropdownMenuContent align="end">
-                                                                    <DropdownMenuLabel>Actions</DropdownMenuLabel>
-                                                                    <DropdownMenuItem>Edit</DropdownMenuItem>
-                                                                    <DropdownMenuItem>Delete</DropdownMenuItem>
-                                                                </DropdownMenuContent>
-                                                            </DropdownMenu>
-                                                        </TableCell>
-                                                    </TableRow>
-                                                ))
-                                            }
-                                        </TableBody>
-                                    </Table>
-                                </CardContent>
-                                <CardFooter>
-                                    <div className="text-xs text-muted-foreground">
-                                        Showing <strong>1-10</strong> of <strong>32</strong>{" "}
-                                        products
-                                    </div>
-                                </CardFooter>
-                            </Card>
+                            <ReportsTable />
                         </TabsContent>
                     </Tabs>
 
